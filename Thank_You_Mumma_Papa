@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Raksha Bandhan Mumma & Papa</title>
+  <style>
+    :root {
+      --primary-red: #c62828;
+      --gold: #ffb300;
+      --deep-orange: #d84315;
+      --bg-cream: #fff8e1;
+    }
+
+    body {
+      background: radial-gradient(circle, #fff8e1 0%, #ffe0b2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .card-container {
+      background: #ffffff;
+      width: 92%;
+      max-width: 540px;
+      height: 88vh;
+      max-height: 700px;
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(216, 67, 21, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px;
+      position: relative;
+      border: 4px solid #ffe082;
+      box-sizing: border-box;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Decorative Corner Diyas */
+    .card-container::before {
+      content: '🪔';
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      font-size: 22px;
+    }
+    .card-container::after {
+      content: '🪔';
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 22px;
+    }
+
+    h1 {
+      color: var(--primary-red);
+      font-size: 26px;
+      margin: 8px 0;
+    }
+
+    p {
+      color: #5d4037;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: linear-gradient(135deg, var(--deep-orange), #ff5722);
+      color: white;
+      border: none;
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(216, 67, 21, 0.35);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      z-index: 5;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(216, 67, 21, 0.5);
+    }
+
+    /* Screen Transitions */
+    .screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.7s ease-in-out forwards;
+    }
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================
+       SLIDE 1: MOVING FESTIVE GRAPHICS & BIG HEART
+       ========================================== */
+    .stage-festive {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background: #fff3e0;
+      border-radius: 20px;
+      border: 2px dashed #ffb300;
+      overflow: hidden;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(10px) rotate(-4deg); }
+    }
+    @keyframes pulseHeartSlow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .big-red-heart {
+      position: absolute;
+      font-size: 75px;
+      animation: pulseHeartSlow 2.5s infinite ease-in-out;
+      z-index: 3;
+      filter: drop-shadow(0 4px 10px rgba(198,40,40,0.3));
+    }
+
+    .thali-gfx {
+      position: absolute;
+      bottom: 20px;
+      width: 160px;
+      height: 70px;
+      background: radial-gradient(ellipse at center, #ffe082 0%, #ffb300 80%, #ff8f00 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      border: 3px solid #ffd54f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatSlow 4s infinite ease-in-out;
+    }
+    .diya-flame {
+      font-size: 24px;
+      position: absolute;
+      top: -10px;
+    }
+
+    .rakhi-gfx {
+      position: absolute;
+      top: 30px;
+      display: flex;
+      align-items: center;
+      animation: floatReverse 3.5s infinite ease-in-out;
+      z-index: 2;
+    }
+    .rakhi-thread-line {
+      width: 45px;
+      height: 6px;
+      background: repeating-linear-gradient(45deg, #d84315, #d84315 4px, #ffb300 4px, #ffb300 8px);
+      border-radius: 4px;
+    }
+    .rakhi-dial {
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #ffe082, #ffb300);
+      border-radius: 50%;
+      border: 3px solid #b71c1c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      margin: 0 -5px;
+    }
+
+    .floating-sweet {
+      position: absolute;
+      font-size: 26px;
+      animation: floatSlow 3s infinite ease-in-out;
+    }
+    .sweet-1 { left: 20px; top: 110px; } 
+    .sweet-2 { right: 25px; top: 100px; }
+
+    .floating-flower {
+      position: absolute;
+      font-size: 22px;
+      animation: floatReverse 4.5s infinite ease-in-out;
+    }
+    .fl-1 { left: 35px; top: 25px; } 
+    .fl-2 { right: 40px; top: 30px; }
+
+    /* ==========================================
+       SLIDE 2: PARENTS APPRECIATION & PROTECTION
+       ========================================== */
+    .parents-avatar-box {
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, #e1f5fe 0%, #81d4fa 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      border: 4px solid #0288d1;
+      box-shadow: 0 10px 25px rgba(2, 136, 209, 0.2);
+      margin: 8px 0;
+    }
+
+    .protection-badge {
+      background: #fff3e0;
+      border-left: 4px solid var(--deep-orange);
+      padding: 12px 16px;
+      border-radius: 0 12px 12px 0;
+      text-align: left;
+      font-size: 15px;
+      color: #4e342e;
+      margin: 12px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    /* ==========================================
+       SLIDE 3: BEATING HEART MESSAGE
+       ========================================== */
+    .huge-beating-heart {
+      width: 220px;
+      height: 200px;
+      background: radial-gradient(circle, #ff5252 0%, #c62828 100%);
+      position: relative;
+      transform: rotate(-45deg);
+      margin: 40px auto 20px auto;
+      animation: heartBeatSlow 2.5s infinite ease-in-out;
+      box-shadow: 0 10px 25px rgba(198, 40, 40, 0.4);
+    }
+    .huge-beating-heart::before,
+    .huge-beating-heart::after {
+      content: "";
+      width: 220px;
+      height: 200px;
+      background: radial-gradient(circle, #ff5252 0%, #c62828 100%);
+      border-radius: 50%;
+      position: absolute;
+    }
+    .huge-beating-heart::before {
+      top: -110px;
+      left: 0;
+    }
+    .huge-beating-heart::after {
+      left: 110px;
+      top: 0;
+    }
+
+    @keyframes heartBeatSlow {
+      0%, 100% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.08) rotate(-45deg); }
+    }
+
+    .heart-inner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 170px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 10;
+      text-align: center;
+      line-height: 1.4;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ==========================================
+       SLIDE 4 & 5: FINAL GREETINGS
+       ========================================== */
+    .final-heading {
+      font-size: 28px;
+      color: var(--primary-red);
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 10px 0;
+    }
+
+    .signature-box {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d84315;
+      background: #fff3e0;
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 2px dashed #ffb300;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Floating Background Emojis/Hearts */
+    .bg-heart {
+      position: fixed;
+      top: -10vh;
+      z-index: 999;
+      pointer-events: none;
+      animation: fallDown 3.5s linear forwards;
+    }
+    @keyframes fallDown {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    
+    <!-- ==========================================
+         SLIDE 1: MOVING GRAPHICS & HEART
+         ========================================== -->
+    <div id="slide1" class="screen active">
+      <h1>Happy Raksha Bandhan</h1>
+      <p>A heartfelt note of love, protection, and gratitude to our pillars of strength! ✨</p>
+
+      <div class="stage-festive">
+        <!-- Floating Flowers -->
+        <div class="floating-flower fl-1">🌸</div>
+        <div class="floating-flower fl-2">🌼</div>
+
+        <!-- Floating Sweets -->
+        <div class="floating-sweet sweet-1">🟡</div>
+        <div class="floating-sweet sweet-2">🔷</div>
+
+        <!-- Big Red Heart in Center -->
+        <div class="big-red-heart">❤️</div>
+
+        <!-- Moving Rakhi -->
+        <div class="rakhi-gfx">
+          <div class="rakhi-thread-line"></div>
+          <div class="rakhi-dial">🌺</div>
+          <div class="rakhi-thread-line"></div>
+        </div>
+
+        <!-- Puja Thali with Diya -->
+        <div class="thali-gfx">
+          <div class="diya-flame">🪔</div>
+          <div style="position: absolute; bottom: 6px; font-size: 16px;">🔴 🌾 🍬</div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="goToSlide('slide2')">Read Our Note 💌</button>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 2: PARENTS' LOVE & PROTECTION
+         ========================================== -->
+    <div id="slide2" class="screen">
+      <h1>To Our Dearest Parents</h1>
+      
+      <div class="parents-avatar-box">
+        👩‍👦‍👧❤️
+      </div>
+
+      <p style="font-weight: bold; color: #b71c1c; font-size: 16px;">Thank you for always shielding us with your unconditional love.</p>
+
+      <div class="protection-badge">
+        <strong>🛡️ Our Lifelong Bond:</strong><br>
+        Just like a brother’s sacred promise to protect his sister, you both have stood by us, guarded us through every storm, and shown us what true selfless care looks like.
+      </div>
+
+      <button class="btn" onclick="goToSlide('slide3')">A Special Message ❤️</button>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 3: BEATING HEART MESSAGE
+         ========================================== -->
+    <div id="slide3" class="screen">
+      <h1>From Our Hearts</h1>
+      <p style="font-size: 14px; color: #795548;">Hold to feel the warmth of our gratitude...</p>
+
+      <div class="huge-beating-heart">
+        <div class="heart-inner-text">
+          Thank you for everything.<br>Love you so much.
+        </div>
+      </div>
+
+      <button class="btn" onclick="goToSlide('slide4')">See Final Wish ✨</button>
+    </div>
+
+    <!-- ==========================================
+         SLIDE 4: FINAL WISH & SCREEN FULL OF HEARTS
+         ========================================== -->
+    <div id="slide4" class="screen">
+      <div style="font-size: 35px;">🎉🪔🎊</div>
+      
+      <div class="final-heading">
+        Happy Rakhi Mumma & Papa!
+      </div>
+
+      <p style="font-size: 15px; color: #4e342e; max-width: 95%; margin: 8px 0; line-height: 1.4;">
+        Thank you for protecting us and standing by us always. We are blessed beyond words to be your children! ✨🌸
+      </p>
+
+      <div class="signature-box">
+        Lots of Love<br>
+        <span style="font-size: 28px; color: #b71c1c;">Vitul & Simran</span>
+      </div>
+
+      <button class="btn" style="margin-top: 15px;" onclick="location.reload()">Replay Card 🔄</button>
+    </div>
+
+  </div>
+
+  <script>
+    function goToSlide(slideId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(slideId).classList.add('active');
+
+      // Trigger fullscreen floating hearts on slide 4
+      if (slideId === 'slide4') {
+        triggerHeartShower();
+      }
+    }
+
+    function triggerHeartShower() {
+      const hearts = ['❤️', '💖', '💗', '💓', '💕', '🌸', '✨'];
+      for (let i = 0; i < 45; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'bg-heart';
+          heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.left = (Math.random() * 95) + 'vw';
+          heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+          heart.style.animationDuration = (Math.random() * 1.5 + 2.5) + 's';
+          document.body.appendChild(heart);
+
+          setTimeout(() => heart.remove(), 4000);
+        }, i * 60);
+      }
+    }
+  </script>
+
+</body>
+</html>
