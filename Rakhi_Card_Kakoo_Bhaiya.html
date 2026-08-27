@@ -338,7 +338,9 @@
     ];
 
     function goToScreen(screenId) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.screen').forEach(function(s) {
+        s.classList.remove('active');
+      });
       document.getElementById(screenId).classList.add('active');
     }
 
@@ -348,39 +350,19 @@
       const ritualSteps = [
         { 
           text: "Applying Tilak and Rice...", 
-          content: `<div class="forehead-scene">
-                      <div class="forehead"></div>
-                      <div class="tilak-dot"></div>
-                      <div class="rice r1"></div>
-                      <div class="rice r2"></div>
-                      <div class="rice r3"></div>
-                    </div>` 
+          content: '<div class="forehead-scene"><div class="forehead"></div><div class="tilak-dot"></div><div class="rice r1"></div><div class="rice r2"></div><div class="rice r3"></div></div>' 
         },
         { 
           text: "Tying the Rakhi...", 
-          content: `<div class="wrist-scene">
-                      <div class="wrist"></div>
-                      <div class="rakhi-wrapper">
-                        <div class="thread left"></div>
-                        <div class="flower-center">🌺</div>
-                        <div class="thread right"></div>
-                      </div>
-                    </div>` 
+          content: '<div class="wrist-scene"><div class="wrist"></div><div class="rakhi-wrapper"><div class="thread left"></div><div class="flower-center">🌺</div><div class="thread right"></div></div></div>' 
         },
         { 
           text: "Showering Auspicious Flower Petals...", 
-          content: `<div style="font-size: 70px; animation: heartbeat 1.5s infinite;">🙏✨</div>` 
+          content: '<div style="font-size: 70px; animation: heartbeat 1.5s infinite;">🙏✨</div>' 
         },
         { 
           text: "Feeding Traditional Sweets...", 
-          content: `<div class="sweets-scene-wrapper">
-                      <div class="sweets-scene">
-                        <div class="thali"></div>
-                        <div class="ladoo"></div>
-                        <div class="kaju-barfi"></div>
-                        <div class="jalebi"></div>
-                      </div>
-                    </div>` 
+          content: '<div class="sweets-scene-wrapper"><div class="sweets-scene"><div class="thali"></div><div class="ladoo"></div><div class="kaju-barfi"></div><div class="jalebi"></div></div></div>' 
         }
       ];
 
@@ -393,34 +375,29 @@
           textEl.innerText = ritualSteps[stepIndex].text;
           emojiEl.innerHTML = ritualSteps[stepIndex].content;
 
-          // Fullscreen Petal Shower Logic
           if (stepIndex === 2) {
             for (let i = 0; i < 70; i++) {
-              setTimeout(() => {
+              setTimeout(function() {
                 let petal = document.createElement('div');
                 petal.className = 'fullscreen-petal';
-                // Mix of pink, yellow, and red petals/flowers
                 const flowers = ['🌸', '🌼', '🌹', '🌺', '💮'];
                 petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-                // Random position across the entire viewport width
                 petal.style.left = Math.random() * 100 + 'vw';
-                // Random fall speed between 2.5s and 4.5s
                 petal.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-                // Random sizes
                 petal.style.fontSize = (Math.random() * 20 + 15) + 'px';
                 
                 document.body.appendChild(petal);
                 
-                // Remove the petal from DOM after it falls to prevent lag
-                setTimeout(() => petal.remove(), 5000);
-              }, i * 40); // Stagger the petals so they fall continuously
+                setTimeout(function() {
+                  petal.remove();
+                }, 5000);
+              }, i * 40);
             }
           }
 
           stepIndex++;
-          setTimeout(runStep, 3500); // 3.5 Seconds per step to enjoy the animations
+          setTimeout(runStep, 3500);
         } else {
-          // Finished rituals, show personalized final screen
           showFinalScreen();
         }
       }
@@ -431,7 +408,7 @@
     function showFinalScreen() {
       goToScreen('screen4');
       const name = brothersList[currentBrotherIndex];
-      document.getElementById('personalizedHeading').innerHTML = `Happy Raksha Bandhan,<br><span style="color: #d84315; font-size: 38px;">${name}!</span>`;
+      document.getElementById('personalizedHeading').innerHTML = "Happy Raksha Bandhan,<br><span style='color: #d84315; font-size: 38px;'>" + name + "!</span>";
     }
   </script>
 
