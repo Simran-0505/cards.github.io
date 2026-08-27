@@ -1,440 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Rakhi Ramesh Bhaiya!</title>
-  <style>
-    :root {
-      --primary-red: #b71c1c;
-      --gold: #ffb300;
-      --deep-orange: #d84315;
-      --bg-cream: #fff8e1;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Rakhi Ramesh Bhaiya!</title>
+  <style>
+    :root {
+      --primary-red: #b71c1c;
+      --gold: #ffb300;
+      --deep-orange: #d84315;
+      --bg-cream: #fff8e1;
+    }
 
-    body {
-      background: radial-gradient(circle, #fff8e1 0%, #ffe0b2 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      overflow: hidden;
-    }
+    body {
+      background: radial-gradient(circle, #fff8e1 0%, #ffe0b2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
 
-    .card-container {
-      background: #ffffff;
-      width: 90%;
-      max-width: 550px;
-      height: 85vh;
-      max-height: 680px;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(183, 28, 28, 0.15);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 30px;
-      position: relative;
-      border: 4px solid #ffecb3;
-      box-sizing: border-box;
-      text-align: center;
-      z-index: 10;
-    }
+    .card-container {
+      background: #ffffff;
+      width: 90%;
+      max-width: 550px;
+      height: 85vh;
+      max-height: 680px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(183, 28, 28, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px;
+      position: relative;
+      border: 4px solid #ffecb3;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 10;
+    }
 
-    /* Decorative border corners */
-    .card-container::before {
-      content: '🪔';
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      font-size: 24px;
-    }
-    .card-container::after {
-      content: '🪔';
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 24px;
-    }
+    .card-container::before {
+      content: '🪔';
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 24px;
+    }
+    .card-container::after {
+      content: '🪔';
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+    }
 
-    h1 {
-      color: var(--primary-red);
-      font-size: 28px;
-      margin-top: 10px;
-      margin-bottom: 5px;
-    }
+    h1 {
+      color: var(--primary-red);
+      font-size: 28px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
 
-    p {
-      color: #5d4037;
-      font-size: 16px;
-      line-height: 1.5;
-    }
+    p {
+      color: #5d4037;
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
-    /* Interactive Buttons */
-    .btn {
-      background: linear-gradient(135deg, var(--deep-orange), #ff5722);
-      color: white;
-      border: none;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(216, 67, 21, 0.4);
-      transition: all 0.3s ease;
-      margin-top: 15px;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(216, 67, 21, 0.6);
-    }
+    .btn {
+      background: linear-gradient(135deg, var(--deep-orange), #ff5722);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(216, 67, 21, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(216, 67, 21, 0.6);
+    }
 
-    /* Screens Management */
-    .screen {
-      display: none;
-      width: 100%;
-      height: 100%;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.8s ease-in-out forwards;
-    }
-    .screen.active {
-      display: flex;
-    }
+    .screen {
+      display: none;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+    .screen.active {
+      display: flex;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    /* Screen 2: Interactive Rakhi */
-    .rakhi-interactive-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      margin: 20px 0;
-      animation: heartbeat 1.5s infinite;
-    }
+    .rakhi-interactive-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 20px 0;
+      animation: heartbeat 1.5s infinite;
+    }
 
-    .display-thread {
-      width: 70px;
-      height: 10px;
-      background: repeating-linear-gradient(45deg, #d84315, #d84315 5px, #ffb300 5px, #ffb300 10px);
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
+    .display-thread {
+      width: 70px;
+      height: 10px;
+      background: repeating-linear-gradient(45deg, #d84315, #d84315 5px, #ffb300 5px, #ffb300 10px);
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
 
-    .rakhi-display-box {
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle, #ffe082 0%, #ffb300 100%);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 25px rgba(255, 179, 0, 0.5);
-      position: relative;
-      border: 4px dashed #ffffff;
-      z-index: 2;
-      margin: 0 -15px;
-    }
+    .rakhi-display-box {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, #ffe082 0%, #ffb300 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(255, 179, 0, 0.5);
+      position: relative;
+      border: 4px dashed #ffffff;
+      z-index: 2;
+      margin: 0 -15px;
+    }
 
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      25%, 75% { transform: scale(1.08); }
-      50% { transform: scale(1.04); }
-    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      25%, 75% { transform: scale(1.08); }
+      50% { transform: scale(1.04); }
+    }
 
-    .luxury-rakhi-inner {
-      font-size: 65px;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-    }
+    .luxury-rakhi-inner {
+      font-size: 65px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    }
 
-    /* Screen 3: Cinematic Ritual Animation Container */
-    .animation-viewport {
-      width: 100%;
-      height: 280px;
-      background: #fff3e0;
-      border-radius: 16px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      border: 2px solid #ffe0b2;
-      margin: 15px 0;
-    }
+    .animation-viewport {
+      width: 100%;
+      height: 280px;
+      background: #fff3e0;
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 2px solid #ffe0b2;
+      margin: 15px 0;
+    }
 
-    .ritual-character-stage {
-      font-size: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
+    .ritual-character-stage {
+      font-size: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
 
-    .ritual-status-title {
-      font-size: 22px;
-      font-weight: bold;
-      color: var(--primary-red);
-      margin-top: 10px;
-      height: 30px;
-    }
+    .ritual-status-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--primary-red);
+      margin-top: 10px;
+      height: 30px;
+    }
+    
+    @keyframes fadeAppear {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-    /* --- Custom Ritual CSS Animations --- */
-    
-    @keyframes fadeAppear {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    
-    @keyframes slideUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    .forehead-scene { position: relative; width: 140px; height: 180px; margin: 0 auto; }
+    .forehead { width: 100%; height: 100%; background: #f5c2a5; border-radius: 40% 40% 20% 20%; box-shadow: inset 0 10px 20px rgba(0,0,0,0.1); }
+    .tilak-dot { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 18px; height: 45px; background: #b71c1c; border-radius: 50% 50% 5px 5px; opacity: 0; animation: fadeAppear 0.5s 0.5s forwards; }
+    .rice { position: absolute; width: 6px; height: 12px; background: white; border-radius: 50%; opacity: 0; animation: fadeAppear 0.5s 1.2s forwards; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+    .r1 { top: 43%; left: 45%; transform: rotate(15deg); }
+    .r2 { top: 46%; left: 50%; transform: rotate(-25deg); }
+    .r3 { top: 41%; left: 52%; transform: rotate(10deg); }
 
-    /* Tilak & Rice Scene */
-    .forehead-scene { position: relative; width: 140px; height: 180px; margin: 0 auto; }
-    .forehead { width: 100%; height: 100%; background: #f5c2a5; border-radius: 40% 40% 20% 20%; box-shadow: inset 0 10px 20px rgba(0,0,0,0.1); }
-    .tilak-dot { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 18px; height: 45px; background: #b71c1c; border-radius: 50% 50% 5px 5px; opacity: 0; animation: fadeAppear 0.5s 0.5s forwards; }
-    .rice { position: absolute; width: 6px; height: 12px; background: white; border-radius: 50%; opacity: 0; animation: fadeAppear 0.5s 1.2s forwards; box-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-    .r1 { top: 43%; left: 45%; transform: rotate(15deg); }
-    .r2 { top: 46%; left: 50%; transform: rotate(-25deg); }
-    .r3 { top: 41%; left: 52%; transform: rotate(10deg); }
+    .wrist-scene { position: relative; width: 240px; height: 200px; margin: 0 auto; overflow: hidden; }
+    .wrist { position: absolute; top: 80px; left: 20px; width: 200px; height: 65px; background: #f5c2a5; border-radius: 15px; box-shadow: inset 0 -10px 15px rgba(0,0,0,0.1); }
+    .rakhi-wrapper { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; animation: tieRakhi 1.5s 0.3s forwards; }
+    .thread { width: 75px; height: 8px; background: repeating-linear-gradient(45deg, #d84315, #d84315 5px, #ffb300 5px, #ffb300 10px); border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1; }
+    .flower-center { width: 65px; height: 65px; background: radial-gradient(circle, #ffe082, #ffb300); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 3px solid #b71c1c; z-index: 2; margin: 0 -8px; }
 
-    /* Wrist & Rakhi Scene */
-    .wrist-scene { position: relative; width: 240px; height: 200px; margin: 0 auto; overflow: hidden; }
-    .wrist { position: absolute; top: 80px; left: 20px; width: 200px; height: 65px; background: #f5c2a5; border-radius: 15px; box-shadow: inset 0 -10px 15px rgba(0,0,0,0.1); }
-    .rakhi-wrapper { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; animation: tieRakhi 1.5s 0.3s forwards; }
-    .thread { width: 75px; height: 8px; background: repeating-linear-gradient(45deg, #d84315, #d84315 5px, #ffb300 5px, #ffb300 10px); border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); z-index: 1; }
-    .flower-center { width: 65px; height: 65px; background: radial-gradient(circle, #ffe082, #ffb300); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 3px solid #b71c1c; z-index: 2; margin: 0 -8px; }
+    @keyframes tieRakhi {
+      0% { top: -80px; opacity: 0; }
+      100% { top: 70px; opacity: 1; }
+    }
 
-    @keyframes tieRakhi {
-      0% { top: -80px; opacity: 0; }
-      100% { top: 70px; opacity: 1; }
-    }
+    .sweets-scene-wrapper { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; animation: slideUp 1s ease-out forwards; }
+    .sweets-scene { position: relative; width: 220px; height: 180px; }
+    .thali { position: absolute; width: 200px; height: 90px; background: radial-gradient(ellipse at center, #eceff1 0%, #b0bec5 100%); border-radius: 50%; bottom: 20px; left: 10px; box-shadow: 0 15px 20px rgba(0,0,0,0.2), inset 0 -5px 10px rgba(0,0,0,0.4); border: 3px solid #cfd8dc; }
+    .ladoo { position: absolute; width: 45px; height: 45px; background: radial-gradient(circle at 30% 30%, #ffca28, #f57c00); border-radius: 50%; bottom: 45px; left: 40px; box-shadow: -2px 5px 5px rgba(0,0,0,0.4); }
+    .kaju-barfi { position: absolute; width: 45px; height: 45px; background: linear-gradient(135deg, #fafafa, #e0e0e0); transform: rotate(45deg); bottom: 50px; left: 90px; box-shadow: 0 5px 5px rgba(0,0,0,0.4); border: 1px solid #bdbdbd; }
+    .jalebi { position: absolute; width: 45px; height: 45px; bottom: 40px; right: 40px; border-radius: 50%; background: transparent; border: 5px solid #fb8c00; box-shadow: inset 0 0 0 3px #fff3e0, inset 0 0 0 7px #fb8c00, -2px 5px 5px rgba(0,0,0,0.4); }
 
-    /* Traditional Sweets Scene */
-    .sweets-scene-wrapper { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; animation: slideUp 1s ease-out forwards; }
-    .sweets-scene { position: relative; width: 220px; height: 180px; }
-    /* The Silver Thali */
-    .thali { position: absolute; width: 200px; height: 90px; background: radial-gradient(ellipse at center, #eceff1 0%, #b0bec5 100%); border-radius: 50%; bottom: 20px; left: 10px; box-shadow: 0 15px 20px rgba(0,0,0,0.2), inset 0 -5px 10px rgba(0,0,0,0.4); border: 3px solid #cfd8dc; }
-    /* Ladoo */
-    .ladoo { position: absolute; width: 45px; height: 45px; background: radial-gradient(circle at 30% 30%, #ffca28, #f57c00); border-radius: 50%; bottom: 45px; left: 40px; box-shadow: -2px 5px 5px rgba(0,0,0,0.4); }
-    /* Kaju Barfi */
-    .kaju-barfi { position: absolute; width: 45px; height: 45px; background: linear-gradient(135deg, #fafafa, #e0e0e0); transform: rotate(45deg); bottom: 50px; left: 90px; box-shadow: 0 5px 5px rgba(0,0,0,0.4); border: 1px solid #bdbdbd; }
-    /* Jalebi */
-    .jalebi { position: absolute; width: 45px; height: 45px; bottom: 40px; right: 40px; border-radius: 50%; background: transparent; border: 5px solid #fb8c00; box-shadow: inset 0 0 0 3px #fff3e0, inset 0 0 0 7px #fb8c00, -2px 5px 5px rgba(0,0,0,0.4); }
+    .fullscreen-petal {
+      position: fixed;
+      z-index: 9999;
+      pointer-events: none;
+      top: -10vh;
+      animation: fallFullscreen 4s linear forwards;
+    }
+    
+    @keyframes fallFullscreen {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
 
-    /* Fullscreen Floating Petals Animation */
-    .fullscreen-petal {
-      position: fixed;
-      z-index: 9999;
-      pointer-events: none;
-      top: -10vh;
-      animation: fallFullscreen 4s linear forwards;
-    }
-    
-    @keyframes fallFullscreen {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-    }
-
-    /* Screen 4: Final Greeting */
-    .final-title {
-      font-size: 34px;
-      color: var(--primary-red);
-      font-weight: bold;
-      line-height: 1.3;
-      margin-bottom: 10px;
-    }
-    .final-sub {
-      font-size: 18px;
-      color: #795548;
-    }
-    .festive-emojis {
-      font-size: 45px;
-      margin: 15px 0;
-      animation: bounce 1s infinite alternate;
-    }
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
-    }
-  </style>
+    .final-title {
+      font-size: 34px;
+      color: var(--primary-red);
+      font-weight: bold;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .final-sub {
+      font-size: 18px;
+      color: #795548;
+    }
+    .festive-emojis {
+      font-size: 45px;
+      margin: 15px 0;
+      animation: bounce 1s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="card-container">
-    
-    <!-- SCREEN 1: INTRO WELCOME -->
-    <div id="screen1" class="screen active">
-      <h1>Happy Raksha Bandhan</h1>
-      <p style="margin-top: 20px;">A sacred bond of protection, love, and endless memories awaits you.</p>
-      <div style="font-size: 50px; margin: 15px 0;">🪢✨</div>
-      <button class="btn" onclick="goToScreen('screen2')">Begin Celebration</button>
-    </div>
+  <div class="card-container">
+    
+    <div id="screen1" class="screen active">
+      <h1>Happy Raksha Bandhan</h1>
+      <p style="margin-top: 20px;">A sacred bond of protection, love, and endless memories awaits you.</p>
+      <div style="font-size: 50px; margin: 15px 0;">🪢✨</div>
+      <button class="btn" onclick="goToScreen('screen2')">Begin Celebration</button>
+    </div>
 
-    <!-- SCREEN 2: INTERACTIVE RAKHI SELECTION -->
-    <div id="screen2" class="screen">
-      <h1>The Sacred Thread</h1>
-      <p>Tap the Rakhi below to start the traditional ritual ceremony.</p>
-      
-      <div class="rakhi-interactive-wrapper" onclick="startRitualSequence()">
-        <div class="display-thread"></div>
-        <div class="rakhi-display-box">
-          <div class="luxury-rakhi-inner">🌺✨</div>
-        </div>
-        <div class="display-thread"></div>
-      </div>
-      
-      <p style="font-size: 14px; color: #b71c1c; font-weight: bold;">(Click the Rakhi to Proceed)</p>
-    </div>
+    <div id="screen2" class="screen">
+      <h1>The Sacred Thread</h1>
+      <p>Tap the Rakhi below to start the traditional ritual ceremony.</p>
+      
+      <div class="rakhi-interactive-wrapper" onclick="startRitualSequence()">
+        <div class="display-thread"></div>
+        <div class="rakhi-display-box">
+          <div class="luxury-rakhi-inner">🌺✨</div>
+        </div>
+        <div class="display-thread"></div>
+      </div>
+      
+      <p style="font-size: 14px; color: #b71c1c; font-weight: bold;">(Click the Rakhi to Proceed)</p>
+    </div>
 
-    <!-- SCREEN 3: CINEMATIC RITUAL SEQUENCE -->
-    <div id="screen3" class="screen">
-      <div class="animation-viewport" id="viewport">
-        <div id="ritualEmoji" class="ritual-character-stage"></div>
-      </div>
-      <div id="ritualText" class="ritual-status-title">Applying Sacred Tilak...</div>
-    </div>
+    <div id="screen3" class="screen">
+      <div class="animation-viewport" id="viewport">
+        <div id="ritualEmoji" class="ritual-character-stage"></div>
+      </div>
+      <div id="ritualText" class="ritual-status-title">Applying Sacred Tilak...</div>
+    </div>
 
-    <!-- SCREEN 4: FINAL PERSONALIZED MESSAGE -->
-    <div id="screen4" class="screen">
-      <div class="festive-emojis">🎉🪔🎊</div>
-      <div class="final-title" id="personalizedHeading">Happy Raksha Bandhan!</div>
-      <p class="final-sub">Thank you for always being my pillar of strength and joy. May our bond grow stronger every single year!</p>
-      <button class="btn" style="margin-top: 20px;" onclick="location.reload()">Replay Card</button>
-    </div>
+    <div id="screen4" class="screen">
+      <div class="festive-emojis">🎉🪔🎊</div>
+      <div class="final-title" id="personalizedHeading">Happy Raksha Bandhan!</div>
+      <p class="final-sub">Thank you for always being my pillar of strength and joy. May our bond grow stronger every single year!</p>
+      <button class="btn" style="margin-top: 20px;" onclick="location.reload()">Replay Card</button>
+    </div>
 
-  </div>
+  </div>
 
-  <script>
-    // ==========================================
-    // ⚙️ SELECT YOUR BROTHER/SISTER HERE (0 to 12) ⚙️
-    // ==========================================
-    const currentBrotherIndex = 5; // Change this number to switch between the 13 versions
+  <script>
+    const currentBrotherIndex = 5;
 
-    const brothersList = [
-      "Ashu Bhaiya",    // 0
-      "Sunny Bhaiya",   // 1
-      "Kakoo Bhaiya",   // 2
-      "Sherry Bhaiya",  // 3
-      "Harry Bhaiya",   // 4
-      "Ramesh Bhaiya",  // 5
-      "Sunil Bhaiya",   // 6
-      "Yogesh",         // 7
-      "Harshal",        // 8
-      "Prashant Bhai",  // 9
-      "Anku Didi",      // 10
-      "Ankush Jiju",    // 11
-      "Apoorva Didi"    // 12
-    ];
+    const brothersList = [
+      "Ashu Bhaiya",
+      "Sunny Bhaiya",
+      "Kakoo Bhaiya",
+      "Sherry Bhaiya",
+      "Harry Bhaiya",
+      "Ramesh Bhaiya",
+      "Sunil Bhaiya",
+      "Yogesh",
+      "Harshal",
+      "Prashant Bhai",
+      "Anku Didi",
+      "Ankush Jiju",
+      "Apoorva Didi"
+    ];
 
-    function goToScreen(screenId) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(screenId).classList.add('active');
-    }
+    function goToScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(function(s) {
+        s.classList.remove('active');
+      });
+      document.getElementById(screenId).classList.add('active');
+    }
 
-    function startRitualSequence() {
-      goToScreen('screen3');
-      
-      const ritualSteps = [
-        { 
-          text: "Applying Tilak and Rice...", 
-          content: `<div class="forehead-scene">
-                      <div class="forehead"></div>
-                      <div class="tilak-dot"></div>
-                      <div class="rice r1"></div>
-                      <div class="rice r2"></div>
-                      <div class="rice r3"></div>
-                    </div>` 
-        },
-        { 
-          text: "Tying the Rakhi...", 
-          content: `<div class="wrist-scene">
-                      <div class="wrist"></div>
-                      <div class="rakhi-wrapper">
-                        <div class="thread left"></div>
-                        <div class="flower-center">🌺</div>
-                        <div class="thread right"></div>
-                      </div>
-                    </div>` 
-        },
-        { 
-          text: "Showering Auspicious Flower Petals...", 
-          content: `<div style="font-size: 70px; animation: heartbeat 1.5s infinite;">🙏✨</div>` 
-        },
-        { 
-          text: "Feeding Traditional Sweets...", 
-          content: `<div class="sweets-scene-wrapper">
-                      <div class="sweets-scene">
-                        <div class="thali"></div>
-                        <div class="ladoo"></div>
-                        <div class="kaju-barfi"></div>
-                        <div class="jalebi"></div>
-                      </div>
-                    </div>` 
-        }
-      ];
+    function startRitualSequence() {
+      goToScreen('screen3');
+      
+      const ritualSteps = [
+        { 
+          text: "Applying Tilak and Rice...", 
+          content: '<div class="forehead-scene"><div class="forehead"></div><div class="tilak-dot"></div><div class="rice r1"></div><div class="rice r2"></div><div class="rice r3"></div></div>' 
+        },
+        { 
+          text: "Tying the Rakhi...", 
+          content: '<div class="wrist-scene"><div class="wrist"></div><div class="rakhi-wrapper"><div class="thread left"></div><div class="flower-center">🌺</div><div class="thread right"></div></div></div>' 
+        },
+        { 
+          text: "Showering Auspicious Flower Petals...", 
+          content: '<div style="font-size: 70px; animation: heartbeat 1.5s infinite;">🙏✨</div>' 
+        },
+        { 
+          text: "Feeding Traditional Sweets...", 
+          content: '<div class="sweets-scene-wrapper"><div class="sweets-scene"><div class="thali"></div><div class="ladoo"></div><div class="kaju-barfi"></div><div class="jalebi"></div></div></div>' 
+        }
+      ];
 
-      let stepIndex = 0;
-      const textEl = document.getElementById('ritualText');
-      const emojiEl = document.getElementById('ritualEmoji');
+      let stepIndex = 0;
+      const textEl = document.getElementById('ritualText');
+      const emojiEl = document.getElementById('ritualEmoji');
 
-      function runStep() {
-        if (stepIndex < ritualSteps.length) {
-          textEl.innerText = ritualSteps[stepIndex].text;
-          emojiEl.innerHTML = ritualSteps[stepIndex].content;
+      function runStep() {
+        if (stepIndex < ritualSteps.length) {
+          textEl.innerText = ritualSteps[stepIndex].text;
+          emojiEl.innerHTML = ritualSteps[stepIndex].content;
 
-          // Fullscreen Petal Shower Logic
-          if (stepIndex === 2) {
-            for (let i = 0; i < 70; i++) {
-              setTimeout(() => {
-                let petal = document.createElement('div');
-                petal.className = 'fullscreen-petal';
-                // Mix of pink, yellow, and red petals/flowers
-                const flowers = ['🌸', '🌼', '🌹', '🌺', '💮'];
-                petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-                // Random position across the entire viewport width
-                petal.style.left = Math.random() * 100 + 'vw';
-                // Random fall speed between 2.5s and 4.5s
-                petal.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-                // Random sizes
-                petal.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                
-                document.body.appendChild(petal);
-                
-                // Remove the petal from DOM after it falls to prevent lag
-                setTimeout(() => petal.remove(), 5000);
-              }, i * 40); // Stagger the petals so they fall continuously
-            }
-          }
+          if (stepIndex === 2) {
+            for (let i = 0; i < 70; i++) {
+              setTimeout(function() {
+                let petal = document.createElement('div');
+                petal.className = 'fullscreen-petal';
+                const flowers = ['🌸', '🌼', '🌹', '🌺', '💮'];
+                petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+                petal.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                
+                document.body.appendChild(petal);
+                
+                setTimeout(function() {
+                  petal.remove();
+                }, 5000);
+              }, i * 40);
+            }
+          }
 
-          stepIndex++;
-          setTimeout(runStep, 3500); // 3.5 Seconds per step to enjoy the animations
-        } else {
-          // Finished rituals, show personalized final screen
-          showFinalScreen();
-        }
-      }
+          stepIndex++;
+          setTimeout(runStep, 3500);
+        } else {
+          showFinalScreen();
+        }
+      }
 
-      runStep();
-    }
+      runStep();
+    }
 
-    function showFinalScreen() {
-      goToScreen('screen4');
-      const name = brothersList[currentBrotherIndex];
-      document.getElementById('personalizedHeading').innerHTML = `Happy Raksha Bandhan,<br><span style="color: #d84315; font-size: 38px;">${name}!</span>`;
-    }
-  </script>
+    function showFinalScreen() {
+      goToScreen('screen4');
+      const name = brothersList[currentBrotherIndex];
+      document.getElementById('personalizedHeading').innerHTML = "Happy Raksha Bandhan,<br><span style='color: #d84315; font-size: 38px;'>" + name + "!</span>";
+    }
+  </script>
 
 </body>
 </html>
-
